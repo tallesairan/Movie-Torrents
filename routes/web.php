@@ -21,6 +21,8 @@ Route::group(
 
     //Alows admin to add new user, seach and delete them
     Route::get('/users','UserPagesController@getUsers')->name('getUsers');
+    // home page
+    Route::get('/','DashboardController@index')->name('dashboardController');
 
     //Add new user
     Route::post('/users','UserPagesController@postUser')->name('postUser');

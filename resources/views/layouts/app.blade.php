@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'MovieTorrents') }}</title>
+    <title>{{@$title}} {{ config('app.name', 'MovieTorrents') }}</title>
 
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
@@ -43,7 +43,7 @@
 
                         <!-- Branding Image -->
                         <a class="navbar-brand {{ (Auth::check()) ? 'auth-margin' : '' }}" href="{{ url('/') }}">
-                            mOvIeToRrEnTs
+                            laraflix
                         </a>
                     </div>
 
@@ -55,11 +55,11 @@
 
                         <!-- Right Side Of Navbar -->
                         <ul class="nav navbar-nav navbar-right">
-                            <li><a href="{{route('browseMovies')}}" class="{{ (Auth::check()) ? 'auth-margin' : '' }}">Browse movies</a></li>
+                            <li><a href="{{route('browseMovies')}}" class="{{ (Auth::check()) ? 'auth-margin' : '' }}">Explorar</a></li>
                             <!-- Authentication Links -->
                             @if (Auth::guest())
                                 <li><a href="{{ url('/login') }}">Login</a></li>
-                                <li><a href="{{ url('/register') }}">Register</a></li>
+                                <li><a href="{{ url('/register') }}">Registrar</a></li>
                             @else
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -71,10 +71,10 @@
                                         <li><a href="{{route('getProfile',['user_id'=>Auth::id()])}}"><i class="fa fa-user" aria-hidden="true"></i> Profile</a></li>
                                         @foreach(Auth::user()->roles as $role)
                                             @if($role->name == 'admin')
-                                                <li><a href="{{route('getUsers')}}"><i class="fa fa-users" aria-hidden="true"></i> Users</a></li>
-                                                <li><a href="{{route('getMovies')}}"><i class="fa fa-film" aria-hidden="true"></i> Movies</a></li>
-                                                <li><a href="{{route('getActors')}}"><i class="fa fa-user-circle" aria-hidden="true"></i> Actors</a></li>
-                                                <li><a href="{{route('getGenres')}}"><i class="fa fa-video-camera" aria-hidden="true"></i> Genres</a></li>
+                                                <li><a href="{{route('getUsers')}}"><i class="fa fa-users" aria-hidden="true"></i> Usuarios</a></li>
+                                                <li><a href="{{route('getMovies')}}"><i class="fa fa-film" aria-hidden="true"></i> Filmes/Series</a></li>
+                                                <li><a href="{{route('getActors')}}"><i class="fa fa-user-circle" aria-hidden="true"></i> Atores</a></li>
+                                                <li><a href="{{route('getGenres')}}"><i class="fa fa-video-camera" aria-hidden="true"></i> Generos</a></li>
                                             @endif
                                         @endforeach
                                         <li>
@@ -103,7 +103,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="footer text-center">
-                <p>&copy; MovieTorrents {{date('Y')}}.</p>
+                <p>&copy; Filmes Online {{date('Y')}}.</p>
             </div>
         </div>
     </div>
